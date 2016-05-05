@@ -1,0 +1,24 @@
+@import "define";
+
+
+.buttons--root {
+  i {
+    @extend %buttons--pointer;
+    @include buttons--transition(opacity $buttons--transition-delay);
+    opacity: $buttons--opacity-off;
+
+    &:hover {
+      opacity: $buttons--opacity-on;
+    }
+
+    &.buttons--off {
+      opacity: $buttons--opacity-on;
+
+      &:hover {
+        opacity: $buttons--opacity-off;
+      }
+    }
+  }
+}
+
+// end of buttons.scss
