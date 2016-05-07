@@ -14,6 +14,9 @@ module.exports = React.createClass({
 
     // event handlers
     handleClick: function (e) {
+        if ((' '+e.className+' ').replace(/[\n\t\r]/g, ' ').indexOf(' buttons--disabled ') > -1) {
+            return
+        }
         this.props.handler(e.target)
     },
 
@@ -25,7 +28,9 @@ module.exports = React.createClass({
             if (button.show === false) return    // undefined is considered true
             buttons.push(
                 <i key={button.className+idx} data-key={button.key}
-                   className={'fa '+button.className+' '+((button.off)? 'buttons--off': '')}
+                   className={'fa '+button.className+' '+
+                              ((button.disabled)? 'buttons--disabled':
+                               (button.reverse)? 'buttons--reverse': '')}
                    aria-hidden="true"></i>
             )
         })

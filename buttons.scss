@@ -11,8 +11,17 @@
       opacity: $buttons--opacity-on;
     }
 
-    &.buttons--off {
+    &.buttons--reverse {
       opacity: $buttons--opacity-on;
+
+      &:hover {
+        opacity: $buttons--opacity-off;
+      }
+    }
+
+    &.buttons--disabled {
+      cursor: auto;
+      opacity: $buttons--opacity-off;
 
       &:hover {
         opacity: $buttons--opacity-off;
