@@ -1,3 +1,8 @@
+/*
+ *  <Buttons> module based on Font Awesome;
+ *  see https://fortawesome.github.io/Font-Awesome/icons/
+ */
+
 var React = require('react')
 var ReactDOM = require('react-dom')
 
