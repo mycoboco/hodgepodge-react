@@ -20,14 +20,20 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
+    "material-ui": "^0.15.0",
     "react": "^15.0.2",
     "react-dom": "^15.0.2"
   },
   "devDependencies": {
     "node-sass": "^3.4.2"
   },
-  "engines": { "node": ">=0.12.6" },
+  "engines": {
+    "node": ">=0.12.6"
+  },
   "keywords": [
-    "React", "webapp", "helper", "library"
+    "React",
+    "webapp",
+    "helper",
+    "library"
   ]
 }
