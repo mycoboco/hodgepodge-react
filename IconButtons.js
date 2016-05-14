@@ -1,3 +1,7 @@
+/*
+ *  <IconButtons> module based on material-ui's IconButton
+ */
+
 var React = require('react')
 var ReactDOM = require('react-dom')
 
@@ -7,11 +11,8 @@ var IconButton = require('material-ui/IconButton')['default']
 module.exports = React.createClass({
     // dev
     propTypes: {
-        buttons: React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
-        prop:    React.PropTypes.object,
-        show:    React.PropTypes.bool,
-        size:    React.PropTypes.number,
-        handler: React.PropTypes.func.isRequired
+        buttons:  React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
+        handler:  React.PropTypes.func.isRequired
     },
 
     render: function () {
