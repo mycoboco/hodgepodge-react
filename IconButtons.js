@@ -11,8 +11,9 @@ var IconButton = require('material-ui/IconButton')['default']
 module.exports = React.createClass({
     // dev
     propTypes: {
-        buttons:  React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
-        handler:  React.PropTypes.func.isRequired
+        buttons:   React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
+        className: React.PropTypes.string,
+        handler:   React.PropTypes.func.isRequired
     },
 
     render: function () {
@@ -45,7 +46,7 @@ module.exports = React.createClass({
         })
 
         return (
-            <div className={'buttons--root '+(this.props.className || '')}
+            <div className={'icon-buttons--root '+(this.props.className || '')}
                  onTouchTap={this.props.handler}>
                 {Buttons}
             </div>
