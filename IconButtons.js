@@ -5,6 +5,7 @@
 var React = require('react')
 var ReactDOM = require('react-dom')
 
+var $ = require('jquery')
 var IconButton = require('material-ui/IconButton')['default']
 
 
@@ -14,6 +15,17 @@ module.exports = React.createClass({
         buttons:   React.PropTypes.arrayOf(React.PropTypes.object).isRequired,
         className: React.PropTypes.string,
         handler:   React.PropTypes.func.isRequired
+    },
+
+    // context
+    contextTypes: {
+        muiTheme: React.PropTypes.object
+    },
+
+    // event handlers
+    handleClick: function (e) {
+        var $button = ($(e.target).is('button'))? $(e.target): $(e.target).parents('button')
+        this.props.handler(e.target, $button)
     },
 
     render: function () {
@@ -38,16 +50,23 @@ module.exports = React.createClass({
                     height: button.size
                 })
             }
+            if (button.prop.disabled) {
+                button.iconProp = button.iconProp || {}
+                button.iconProp.color = self.context.muiTheme.palette.primary3Color
+            }
+
             Buttons.push(
-                <IconButton {...button.prop}>
-                    {React.createElement(button.Element, button.iconProp)}
-                </IconButton>
+                <div>
+                    <IconButton {...button.prop}
+                                onTouchTap={self.handleClick} >
+                        {React.createElement(button.Element, button.iconProp)}
+                    </IconButton>
+                </div>
             )
         })
 
         return (
-            <div className={'icon-buttons--root '+(this.props.className || '')}
-                 onTouchTap={this.props.handler}>
+            <div className={'icon-buttons--root '+(this.props.className || '')}>
                 {Buttons}
             </div>
         )
