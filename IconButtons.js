@@ -47,7 +47,7 @@ module.exports = React.createClass({
                     height: button.size
                 })
             }
-            if (button.prop.disabled) {
+            if (button.prop && button.prop.disabled) {
                 button.iconProp = button.iconProp || {}
                 button.iconProp.color = self.context.muiTheme.palette.primary3Color
             }
