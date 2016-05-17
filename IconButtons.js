@@ -5,7 +5,6 @@
 var React = require('react')
 var ReactDOM = require('react-dom')
 
-var $ = require('jquery')
 var IconButton = require('material-ui/IconButton')['default']
 
 
@@ -22,17 +21,15 @@ module.exports = React.createClass({
         muiTheme: React.PropTypes.object
     },
 
-    // event handlers
-    handleClick: function (e) {
-        var $button = ($(e.target).is('button'))? $(e.target): $(e.target).parents('button')
-        this.props.handler(e.target, $button)
-    },
-
     render: function () {
         var self = this
         var Buttons = []
 
         this.props.buttons.forEach(function (button, idx) {
+            var handler = function (e) {
+                self.props.handler(e.target, button.key)
+            }
+
             if (button.show === false) return    // undefined is considered true
 
             if (typeof button.size === 'number') {
@@ -58,7 +55,7 @@ module.exports = React.createClass({
             Buttons.push(
                 <div>
                     <IconButton {...button.prop}
-                                onTouchTap={self.handleClick} >
+                                onTouchTap={handler}>
                         {React.createElement(button.Element, button.iconProp)}
                     </IconButton>
                 </div>
