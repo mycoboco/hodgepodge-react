@@ -29,6 +29,8 @@ module.exports = React.createClass({
 
         this.props.buttons.forEach(function (button, idx) {
             var handler = function (e) {
+                e.preventDefault()
+                e.stopPropagation()
                 self.props.handler(e.target, button.key)
             }
 
