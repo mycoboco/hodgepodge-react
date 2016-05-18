@@ -1,0 +1,17 @@
+.icon-buttons--root {
+  > div {
+    opacity: .7;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    &.icon-buttons--disabled {
+      &:hover {
+        opacity: .7;
+      }
+    }
+  }
+}
+
+// end of IconButtons.scss

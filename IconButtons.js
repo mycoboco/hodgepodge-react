@@ -7,6 +7,8 @@ var ReactDOM = require('react-dom')
 
 var IconButton = require('material-ui/IconButton')['default']
 
+require('./IconButtons.scss')
+
 
 module.exports = React.createClass({
     // dev
@@ -47,13 +49,15 @@ module.exports = React.createClass({
                     height: button.size
                 })
             }
+            button.iconProp = button.iconProp || {}
             if (button.prop && button.prop.disabled) {
-                button.iconProp = button.iconProp || {}
-                button.iconProp.color = self.context.muiTheme.palette.primary3Color
+                button.iconProp.color = self.context.muiTheme.palette.disabledColor
+            } else if (!button.iconProp.color) {
+                button.iconProp.color = self.context.muiTheme.icon.color
             }
 
             Buttons.push(
-                <div>
+                <div className={(button.prop && button.prop.disabled)? 'icon-buttons--disabled': ''}>
                     <IconButton {...button.prop}
                                 onTouchTap={handler}>
                         {React.createElement(button.Element, button.iconProp)}
