@@ -6,6 +6,7 @@ var React = require('react')
 var ReactDOM = require('react-dom')
 
 var IconButton = require('material-ui/IconButton')['default']
+var FontIcon = require('material-ui/FontIcon')['default']
 
 require('./IconButtons.scss')
 
@@ -42,27 +43,30 @@ module.exports = React.createClass({
                 button.prop.iconStyle = button.prop.iconStyle || {}
 
                 Object.assign(button.prop.style, {
-                    width:   button.size*2,
-                    height:  button.size*2,
-                    padding: button.size/2
+                    width:   button.size*1.5,
+                    height:  button.size*1.5,
+                    padding: button.size/4
                 })
                 Object.assign(button.prop.iconStyle, {
-                    width:  button.size,
-                    height: button.size
+                    fontSize:   button.size,
+                    textShadow: (button.shadow)? '0 0 10px '+button.shadow: 'none'
                 })
             }
             button.iconProp = button.iconProp || {}
             if (button.prop && button.prop.disabled) {
-                button.iconProp.color = self.context.muiTheme.palette.disabledColor
-            } else if (!button.iconProp.color) {
-                button.iconProp.color = self.context.muiTheme.icon.color
+                button.color = self.context.muiTheme.palette.disabledColor
+            } else if (!button.color) {
+                button.color = self.context.muiTheme.icon.color
             }
 
             Buttons.push(
-                <div className={(button.prop && button.prop.disabled)? 'icon-buttons--disabled': ''}>
+                <div className={(button.prop && button.prop.disabled)?
+                                    'icon-buttons--disabled': ''}>
                     <IconButton {...button.prop}
                                 onTouchTap={handler}>
-                        {React.createElement(button.Element, button.iconProp)}
+                        <FontIcon className="material-icons"
+                                  style={button.prop.iconStyle}
+                                  color={button.color}>{button.name}</FontIcon>
                     </IconButton>
                 </div>
             )

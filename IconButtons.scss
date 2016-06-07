@@ -1,5 +1,13 @@
+@mixin transition($target...) {
+  transition: $target;
+  -webkit-transition: $target;
+  -moz-transition: $target;
+}
+
 .icon-buttons--root {
   > div {
+    @include transition(opacity .5s);
+
     opacity: .7;
 
     &:hover {
