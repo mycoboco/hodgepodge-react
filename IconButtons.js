@@ -65,7 +65,7 @@ module.exports = React.createClass({
                     <IconButton {...button.prop}
                                 onTouchTap={handler}>
                         <FontIcon className="material-icons"
-                                  style={button.prop.iconStyle}
+                                  style={button.prop && button.prop.iconStyle}
                                   color={button.color}>{button.name}</FontIcon>
                     </IconButton>
                 </div>
