@@ -52,7 +52,7 @@ module.exports = React.createClass({
                     textShadow: (button.shadow)? '0 0 10px '+button.shadow: 'none'
                 })
             }
-            button.iconProp = button.iconProp || {}
+
             if (button.prop && button.prop.disabled) {
                 button.color = self.context.muiTheme.palette.disabledColor
             } else if (!button.color) {
